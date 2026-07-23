@@ -32,9 +32,15 @@ your-project/
 
 Hoặc cài global: `~/.claude/skills/thue-tndn-vietnam/`.
 
-### Các nền tảng khác
+### Codex CLI
 
-Copy nội dung `SKILL.md` vào system prompt, upload thư mục `references/` vào knowledge base.
+Repo đã có sẵn `AGENTS.md` ở gốc (bản chuyển thể từ `SKILL.md`, không có frontmatter riêng của Claude). Codex tự động đọc `AGENTS.md` khi chạy trong thư mục repo — không cần cấu hình thêm, chỉ cần chạy `codex` với working directory là gốc project này (hoặc thư mục cha chứa nó, tùy cách Codex quét).
+
+> Lưu ý: khác với Claude Skill (tự nạp `references/*.md` theo mô tả khi cần), Codex không tự trigger — `AGENTS.md` chỉ định tường minh "phải mở file X trước khi trả lời câu hỏi Y", Codex sẽ tự đọc file đó vì có quyền truy cập filesystem.
+
+### Các nền tảng khác (ChatGPT Custom GPT/Project, v.v.)
+
+Dán nội dung thân `SKILL.md` (bỏ frontmatter) vào system prompt/instructions, upload toàn bộ thư mục `references/` vào knowledge base.
 
 ## Số Liệu Nhanh (2026)
 
@@ -52,8 +58,10 @@ Copy nội dung `SKILL.md` vào system prompt, upload thư mục `references/` v
 
 ```
 thue-tndn-vietnam/
-├── SKILL.md                              ← Master file (AI đọc đầu tiên)
+├── SKILL.md                              ← Master file cho Claude Skill (AI đọc đầu tiên)
+├── AGENTS.md                              ← Bản chuyển thể của SKILL.md cho Codex CLI/agent khác
 ├── README.md                             ← File này
+├── LICENSE                               ← MIT
 └── references/
     ├── tong-quan-thue.md                 ← Thuế suất TNDN, kỳ tính thuế
     ├── uu-dai-thue.md                     ← Ưu đãi thuế theo ngành/địa bàn/thời gian
