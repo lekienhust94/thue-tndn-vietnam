@@ -1,145 +1,87 @@
 ---
 name: thue-tndn-vietnam
-description: Use when user asks about Vietnamese corporate income tax (thue TNDN), tax rates for enterprises, tax incentives (uu dai thue), quarterly provisional payment (tam nop quy), annual tax finalization (quyet toan TNDN), deductible/non-deductible expenses, or the broader enterprise tax/compliance calendar (VAT/GTGT, e-invoice, PIT withholding, social insurance filings). Covers fiscal year 2026 under Luat Thue TNDN so 67/2025/QH15. Triggers on: thue TNDN, thue doanh nghiep, tam nop, quyet toan thue doanh nghiep, uu dai thue, chi phi duoc tru, thue GTGT, hoa don dien tu, lich ke khai.
+description: Tra cứu và giải thích thuế thu nhập doanh nghiệp (TNDN) Việt Nam cho kỳ tính thuế 2026, gồm thuế suất, căn cứ tính thuế, chi phí được trừ, ưu đãi theo ngành/địa bàn/dự án, tạm nộp quý, quyết toán năm và thời hạn. Cũng dùng khi câu hỏi TNDN cần đối chiếu nghĩa vụ doanh nghiệp liên quan như GTGT, hóa đơn điện tử, khấu trừ TNCN, lao động hoặc BHXH. Không dùng làm nguồn duy nhất để nộp hồ sơ hay ra quyết định pháp lý.
 ---
 
-# Thuế Doanh Nghiệp Vietnam (trọng tâm TNDN)
+# Thuế TNDN Việt Nam 2026
 
-Skill tra cứu thuế Thu nhập doanh nghiệp (TNDN) Việt Nam và nghĩa vụ thuế/kê khai liên quan của doanh nghiệp: thuế suất, ưu đãi, tạm nộp quý, quyết toán năm, GTGT, hóa đơn điện tử, lịch nghĩa vụ tổng thể.
+Tra cứu theo tài liệu đi kèm; không trả lời số liệu pháp lý từ trí nhớ.
 
 > [!CAUTION]
-> **RISK LEVEL: LOW** - Nội dung liên quan quy định pháp luật nhà nước.
-> - Chỉ mang tính tham khảo, KHÔNG thay thế tư vấn thuế chuyên nghiệp.
-> - Áp dụng: Kỳ tính thuế 2026 | Luật Thuế TNDN số 67/2025/QH15
-> - Tính đến v1.9.1 (23/07/2026): **KHÔNG còn mục nào ở mức MEDIUM/LOW** — toàn bộ nội dung (TNDN cốt lõi + nghĩa vụ phụ lao động/BHXH/kiểm toán) đã ở mức 🟢 HIGH. 4 mục MEDIUM cuối cùng (đóng BHXH/BHYT/BHTN, báo cáo lao động, claim "DN quy mô lớn" kiểm toán) đã giải quyết dứt điểm: (1) đọc toàn văn gốc NĐ 145/2020, NĐ 12/2022, NĐ 17/2012, NĐ 158/2025/NĐ-CP và **Luật BHXH 41/2024/QH15** (Điều 34 khoản 4 — hạn đóng hằng tháng: chậm nhất ngày cuối cùng của tháng tiếp theo); (2) claim "DN quy mô lớn phải kiểm toán bắt buộc" xác nhận CÓ căn cứ tại **Nghị định 90/2025/NĐ-CP** sửa đổi NĐ 17/2012/NĐ-CP (xác nhận qua WebSearch, chưa có bản gốc PDF của riêng nghị định này) — xem chi tiết `references/sources.md` và `references/lich-nghia-vu-doanh-nghiep.md`.
-> - ⚠️ v1.0.0 từng ghi SAI "Nghị định 252/2025/NĐ-CP" — đã đính chính ở v1.1.0. Nếu thấy số hiệu này ở đâu đó, đó là lỗi cũ.
-> - ⚠️ v1.2.0: phát hiện **Luật 09/2026/QH16** (24/04/2026, sửa đồng thời 4 luật thuế) + **Nghị định 141/2026/NĐ-CP** (29/04/2026) nâng ngưỡng miễn thuế TNDN hoàn toàn (cho DN doanh thu nhỏ) từ 500 triệu lên **1 tỷ đồng/năm**. Lưu ý: ngưỡng GTGT hộ/cá nhân kinh doanh (khác đối tượng, khác luật) vẫn giữ **500 triệu đồng/năm** — đã chốt bằng NĐ 68/2026/NĐ-CP ở v1.7.0, KHÔNG nâng lên 1 tỷ như TNDN. Mốc 500 triệu trong skill `thue-tncn-vietnam` (sibling skill) cần soát lại riêng, không thuộc phạm vi skill này.
-> - MỌI output PHẢI đi qua Verification Gate (xem workflow bên dưới).
+> **RISK LEVEL: MEDIUM-HIGH.** Sai sót có thể ảnh hưởng số thuế, tiền chậm nộp hoặc hồ sơ của doanh nghiệp. Luôn yêu cầu người dùng kiểm tra văn bản hiện hành hoặc tham vấn chuyên gia trước khi kê khai/nộp thuế.
 
-## Quick Navigation
+## Phạm vi và cách nạp tài liệu
 
-| Câu hỏi | File tham khảo |
-|---------|---------------|
-| Thuế suất bao nhiêu? Căn cứ tính thuế? Chi phí được trừ? | `references/tong-quan-thue.md` |
-| Ưu đãi thuế theo ngành/vùng/dự án đầu tư? | `references/uu-dai-thue.md` |
-| Cách tạm nộp quý, quyết toán năm? SOP? | `references/ke-khai-tam-nop-quyet-toan.md` |
-| Thuế GTGT (VAT) — thuế suất, kê khai tháng/quý? | `references/thue-gtgt-lien-quan.md` |
-| Hóa đơn điện tử — quy định, mức phạt? | `references/hoa-don-dien-tu.md` |
-| Doanh nghiệp cần kê khai/nộp gì hàng tháng/quý/năm? (tổng thể) | `references/lich-nghia-vu-doanh-nghiep.md` |
-| Hạn nộp thuế TNDN cụ thể khi nào? | `references/deadline-tracker.md` |
+Chỉ mở file cần thiết cho câu hỏi:
+
+| Câu hỏi | File phải đọc |
+|---|---|
+| Thuế suất, căn cứ tính thuế, chi phí được/không được trừ | `references/tong-quan-thue.md` |
+| Ưu đãi theo ngành, địa bàn hoặc dự án | `references/uu-dai-thue.md` |
+| Tạm nộp quý, quyết toán năm, quy tắc 80% | `references/ke-khai-tam-nop-quyet-toan.md` |
+| Hạn nộp cụ thể | `references/deadline-tracker.md` |
+| GTGT liên quan doanh nghiệp | `references/thue-gtgt-lien-quan.md` |
+| Hóa đơn điện tử | `references/hoa-don-dien-tu.md` |
+| Lịch nghĩa vụ tổng thể, lao động, BHXH, kiểm toán | `references/lich-nghia-vu-doanh-nghiep.md` |
 | Câu hỏi thường gặp | `references/faq.md` |
-| Data đã thay đổi gì? Phiên bản? | `references/changelog.md` |
-| Nguồn tham khảo + Confidence Level | `references/sources.md` |
 
-## Workflow (5 bước, có 3 Verification Gate)
+Với mọi câu hỏi có số liệu hoặc căn cứ pháp lý, đọc thêm:
 
-```
-1. User hỏi về thuế TNDN
-2. Xác định chủ đề: thuế suất / ưu đãi / kê khai-tạm nộp / quyết toán / hạn nộp
-      │
-      ▼
-3. Load reference file phù hợp
-      │
-      ▼
-┌─────────────────────────────────┐
-│ 🔒 GATE 1: FRESHNESS CHECK     │
-│ - Kiểm tra changelog.md        │
-│ - Data > 6 tháng? -> CẢNH BÁO  │
-└─────────────────────────────────┘
-      │
-      ▼
-4. Soạn câu trả lời
-   (nếu có phép tính thuế: PHẢI tách từng bước, ghi rõ doanh thu làm căn cứ)
-      │
-      ▼
-┌─────────────────────────────────┐
-│ 🔒 GATE 2: CROSS-VERIFY        │
-│ - Số liệu khớp reference?      │
-│ - Confidence = MEDIUM? -> nói rõ với user, khuyên kiểm tra lại │
-└─────────────────────────────────┘
-      │
-      ▼
-┌─────────────────────────────────┐
-│ 🔒 GATE 3: SOURCE CITATION     │
-│ - Ghi căn cứ pháp lý           │
-│ - Ghi ngày cập nhật data       │
-│ - Kèm disclaimer bắt buộc      │
-└─────────────────────────────────┘
-      │
-      ▼
-5. Output + disclaimer
-```
+- `references/changelog.md` để kiểm tra độ mới.
+- `references/sources.md` để kiểm tra confidence và giới hạn nguồn.
+- `references/source-manifest.yaml` để biết văn bản nào thực sự được đóng gói.
 
-## Anti-Hallucination Rules
+Không tự mở toàn bộ PDF/DOCX nếu reference Markdown đã đủ. Chỉ đối chiếu văn bản gốc khi cần kiểm tra câu chữ, điều khoản hoặc phát hiện mâu thuẫn.
 
-> [!WARNING]
-> **CẤM TUYỆT ĐỐI** vi phạm các rule sau:
+## Quy trình bắt buộc
 
-| # | Rule | Fallback |
-|---|------|----------|
-| 1 | KHÔNG BAO GIỜ bịa số liệu thuế (thuế suất, ngưỡng doanh thu, mức ưu đãi) | "Tôi không chắc, vui lòng kiểm tra tại gdt.gov.vn" |
-| 2 | KHÔNG BAO GIỜ khẳng định khi không chắc chắn, đặc biệt với mục confidence MEDIUM trong `sources.md` | "Chưa xác minh chắc chắn, khuyên đối chiếu văn bản gốc" |
-| 3 | KHÔNG tự suy luận quy định mới khi chưa có trong reference | "Quy định này chưa có trong skill, cần cập nhật" |
-| 4 | KHÔNG trả lời câu hỏi ngoài phạm vi skill (thuế TNCN, thuế GTGT, thuế XNK...) | "Skill này chỉ cover thuế TNDN" |
-| 5 | MỌI con số PHẢI kèm căn cứ pháp lý | "Theo Luật 67/2025/QH15, Điều X..." |
-| 6 | Ưu đãi thuế phụ thuộc điều kiện cụ thể của từng doanh nghiệp (ngành, vùng, quy mô dự án) — KHÔNG khẳng định doanh nghiệp cụ thể được hưởng ưu đãi nếu chưa đủ thông tin | Hỏi thêm: ngành nghề, địa bàn đầu tư, dự án mới hay đang hoạt động |
-| 7 | Doanh thu làm căn cứ áp thuế suất ưu đãi (15%/17%) là doanh thu năm TRƯỚC LIỀN KỀ — hỏi rõ trước khi áp dụng | Hỏi: "Doanh thu năm liền trước là bao nhiêu?" |
+1. Xác định kỳ tính thuế và chủ đề.
+2. Đọc reference tương ứng, `changelog.md` và phần liên quan trong `sources.md`.
+3. Nếu dữ liệu đã quá 6 tháng hoặc văn bản có thể đã sửa đổi, cảnh báo rõ.
+4. Đối chiếu con số, đối tượng, điều kiện, ngoại lệ và ngày hiệu lực.
+5. Trả lời có căn cứ pháp lý, ngày cập nhật dữ liệu và disclaimer.
 
-## Nhóm Nội Dung Chính
+Nếu có phép tính:
 
-| Chủ đề | File chính |
-|--------|-----------|
-| Thuế suất phổ thông & theo doanh thu | `tong-quan-thue.md` |
-| Ưu đãi thuế (CNC, R&D, vùng khó khăn, startup...) | `uu-dai-thue.md` |
-| Tạm nộp quý (quy tắc 80%), quyết toán năm | `ke-khai-tam-nop-quyet-toan.md` |
-| Lịch nộp thuế 2026 | `deadline-tracker.md` |
+1. Ghi rõ doanh thu dùng để xác định thuế suất.
+2. Ghi công thức thu nhập tính thuế.
+3. Tách từng bước tính và đơn vị.
+4. Nêu giả định, ưu đãi và khoản chuyển lỗ nếu có.
 
-## Số Liệu Nhanh (2026)
+## Quy tắc chống áp sai
 
-| Chỉ số | Giá trị | Căn cứ | Confidence |
-|--------|---------|--------|-----------|
-| Thuế suất phổ thông | **20%** | Luật 67/2025/QH15 | 🟢 HIGH |
-| Thuế suất DN doanh thu ≤ 3 tỷ/năm (năm trước liền kề) | **15%** | NĐ 320/2025/NĐ-CP, Điều 11 (xác nhận qua chinhphu.vn) | 🟢 HIGH |
-| Thuế suất DN doanh thu 3-50 tỷ/năm | **17%** | NĐ 320/2025/NĐ-CP, Điều 11 (xác nhận qua chinhphu.vn) | 🟢 HIGH |
-| Ngày Luật TNDN mới có hiệu lực | **01/10/2025** | Luật 67/2025/QH15 | 🟢 HIGH |
-| Ngưỡng tạm nộp quý phải đạt | **≥ 80%** số thuế cả năm (tính đến hết quý 4) | **NĐ 252/2026/NĐ-CP**, Điều 24 khoản 3a (thay thế NĐ 126/2020 + NĐ 91/2022 từ 01/07/2026) | 🟢 HIGH |
-| Hạn quyết toán năm | **Chậm nhất ngày cuối tháng thứ ba** kể từ ngày kết thúc năm tài chính (với năm tài chính 31/12 → hạn cơ bản = 31/03 năm sau) | Luật Quản lý thuế **38/2019/QH14** sửa bởi Luật **56/2024/QH15** (xác nhận qua NĐ 245/2026 + NĐ 252/2026 dẫn căn cứ này) | 🟢 HIGH |
-| Thuế suất GTGT phổ thông / giảm 2026 | **10%** / **8%** (giảm đến 31/12/2026) | Luật 48/2024/QH15; NĐ 174/2025/NĐ-CP | 🟢 HIGH |
-| Ngưỡng kê khai GTGT tháng vs quý | **50 tỷ đồng/năm** (doanh thu năm trước) | NĐ 126/2020/NĐ-CP Điều 9 | 🟢 HIGH |
-| Khung pháp lý hóa đơn điện tử mới | NĐ **254/2026/NĐ-CP** (hiệu lực 01/07/2026), thay NĐ 123/2020 + 70/2025 | Đã đọc toàn văn gốc (.docx do người dùng cung cấp) | 🟢 HIGH |
-| **⭐ Ngưỡng MIỄN HOÀN TOÀN thuế TNDN** (doanh thu năm ≤ ngưỡng) | **1 tỷ đồng/năm** (đã thay mốc 500 triệu cũ) | Luật 09/2026/QH16 (bổ sung Khoản 14a Đ.4 Luật 67/2025/QH15) + NĐ 141/2026/NĐ-CP (29/04/2026, bổ sung Khoản 15 Đ.4 NĐ 320/2025/NĐ-CP) | 🟢 HIGH |
+- Không bịa thuế suất, ngưỡng, thời hạn, mức phạt hoặc số điều.
+- Không suy diễn quy định mới ngoài tài liệu. Nói rõ tài liệu chưa cập nhật và yêu cầu đối chiếu nguồn chính thức.
+- Không coi mức 15%/17% theo doanh thu là “ưu đãi theo ngành/địa bàn”. Gọi là **thuế suất theo doanh thu**.
+- Trước khi áp dụng 15%/17%, hỏi doanh thu năm trước liền kề. Với doanh nghiệp mới, dùng quy tắc riêng trong reference.
+- Không khẳng định doanh nghiệp được hưởng ưu đãi nếu chưa có ngành nghề, địa bàn, loại dự án, thời điểm đầu tư và tình trạng hoạt động.
+- Không nhầm ngưỡng miễn TNDN của doanh nghiệp/tổ chức với ngưỡng GTGT của hộ, cá nhân kinh doanh.
+- Không diễn đạt hạn quyết toán thành “90 ngày” nếu văn bản quy định “ngày cuối cùng của tháng thứ ba”.
+- Nếu nguồn chỉ là nguồn thứ cấp hoặc chưa có văn bản gốc trong gói, hạ confidence và nói rõ.
+- Với câu hỏi ngoài phạm vi doanh nghiệp, từ chối áp dụng skill này và chuyển sang nguồn phù hợp.
 
-## Mandatory Disclaimer (Bắt buộc kèm theo mọi output)
+## Mốc tra cứu nhanh
 
-```
+Các mốc này chỉ dùng sau khi đã đọc reference tương ứng:
+
+| Nội dung | Mốc | Căn cứ chính |
+|---|---:|---|
+| Thuế suất phổ thông | 20% | Luật 67/2025/QH15 |
+| Thuế suất theo doanh thu năm trước không quá 3 tỷ đồng | 15% | NĐ 320/2025/NĐ-CP, Điều 11 |
+| Thuế suất theo doanh thu năm trước trên 3 đến 50 tỷ đồng | 17% | NĐ 320/2025/NĐ-CP, Điều 11 |
+| Ngưỡng tạm nộp bốn quý | Ít nhất 80% thuế quyết toán năm | NĐ 252/2026/NĐ-CP, Điều 24 |
+| Hạn tạm nộp thông thường | Ngày cuối tháng đầu quý tiếp theo | NĐ 252/2026/NĐ-CP, Điều 24 |
+| Ngưỡng miễn TNDN theo doanh thu | Không quá 1 tỷ đồng/năm, nếu đủ điều kiện | Luật 09/2026/QH16; NĐ 141/2026/NĐ-CP |
+
+## Mẫu kết thúc bắt buộc
+
+```text
 ⚠️ Thông tin chỉ mang tính tham khảo, KHÔNG thay thế tư vấn thuế chuyên nghiệp.
-Căn cứ: [ghi rõ luật/NĐ/TT]. Một số số liệu confidence MEDIUM — khuyên đối chiếu văn bản gốc.
-Kiểm tra lại tại: https://gdt.gov.vn hoặc https://thuvienphapluat.vn
+Căn cứ: [ghi văn bản và điều/khoản đã đối chiếu].
+Dữ liệu tài liệu cập nhật: [ngày trong changelog/sources].
+Kiểm tra văn bản hiện hành tại: https://vanban.chinhphu.vn hoặc https://gdt.gov.vn
 ```
 
-## Common Mistakes
+Không mặc định dẫn `thuvienphapluat.vn` như nguồn chính thức; đây là nguồn tổng hợp tư nhân.
 
-| Lỗi thường gặp | Cách xử lý đúng |
-|---------------|----------------|
-| Nhầm thuế TNDN với thuế TNCN | Nói rõ: đây là thuế trên lợi nhuận doanh nghiệp, khác thuế TNCN trên thu nhập cá nhân |
-| Áp thuế suất ưu đãi 15%/17% mà không hỏi doanh thu năm liền trước | Luôn hỏi doanh thu năm trước khi áp dụng |
-| Khẳng định chắc chắn DN được hưởng ưu đãi ngành/vùng mà chưa đủ thông tin | Hỏi thêm ngành nghề, địa bàn, loại dự án đầu tư |
-| Dùng số liệu Luật TNDN cũ (Luật 14/2008/QH12 và các lần sửa đổi trước) | Từ kỳ tính thuế 2026 áp dụng Luật 67/2025/QH15 |
-
-## Bundled References
-
-| File | Nội dung | Confidence |
-|------|---------|------------|
-| `references/tong-quan-thue.md` | Thuế suất, căn cứ tính thuế, chi phí được trừ/không được trừ | 🟢 HIGH — đã đọc toàn văn gốc NĐ 320/2025/NĐ-CP (76 trang) + TT 20/2026/TT-BTC |
-| `references/uu-dai-thue.md` | Ưu đãi thuế theo ngành (CNC, R&D), vùng khó khăn, startup, thuế suất đặc thù khai khoáng | 🟢 HIGH — đã đọc toàn văn gốc Chương V NĐ 320/2025/NĐ-CP |
-| `references/ke-khai-tam-nop-quyet-toan.md` | SOP tạm nộp quý (quy tắc 80%), quyết toán năm | 🟢 HIGH |
-| `references/thue-gtgt-lien-quan.md` | Thuế suất GTGT, kê khai tháng/quý, hạn nộp, ngưỡng hộ kinh doanh | 🟢 HIGH — đã đọc toàn văn Luật 149/2025/QH15, Luật 09/2026/QH16, NĐ 68/2026/NĐ-CP |
-| `references/hoa-don-dien-tu.md` | Khung pháp lý hóa đơn điện tử, quy tắc vận hành, mức phạt | 🟢 HIGH — đã đọc toàn văn NĐ 254/2026/NĐ-CP + NĐ 310/2025/NĐ-CP (khung phạt) |
-| `references/lich-nghia-vu-doanh-nghiep.md` | Bảng tổng hợp TẤT CẢ nghĩa vụ định kỳ của doanh nghiệp | 🟢 HIGH toàn bộ (BHXH, báo cáo lao động, kiểm toán BCTC kể cả tiêu chí "DN quy mô lớn" qua NĐ 90/2025/NĐ-CP — 2 mục cuối xác nhận qua WebSearch, chưa có bản gốc PDF) |
-| `references/deadline-tracker.md` | Lịch nộp thuế TNDN 2026 | 🟢 HIGH |
-| `references/faq.md` | Câu hỏi thường gặp | 🟢 HIGH |
-| `references/sources.md` | Nguồn tham khảo + Confidence Level | 🟢 HIGH |
-| `references/changelog.md` | Lịch sử thay đổi, version | 🟢 HIGH |
-
-> Skill self-contained, không phụ thuộc skill bên ngoài. **v2.0.0** | 23/07/2026.
-> Xây dựng hoàn toàn bằng **văn bản gốc do người dùng cung cấp trực tiếp** (đã đọc toàn văn: NĐ 320/2025/NĐ-CP 76 trang, NĐ 252/2026/NĐ-CP 1416+ dòng, NĐ 245/2026/NĐ-CP, NĐ 254/2026/NĐ-CP, TT 20/2026/TT-BTC, NĐ 68/2026/NĐ-CP, NĐ 310/2025/NĐ-CP, NĐ 145/2020, NĐ 12/2022, NĐ 17/2012, Luật 67/2025, Luật 09/2026, Luật 149/2025, Luật 48/2024, Luật 41/2024...). **100% TOÀN BỘ MỤC TRONG SKILL ĐẠT 🟢 HIGH CONFIDENCE** — KHÔNG còn bất kỳ mục nào ở mức MEDIUM/LOW.
+**Phiên bản nội dung:** 2.0.1 — 23/07/2026.

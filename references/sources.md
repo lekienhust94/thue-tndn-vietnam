@@ -1,4 +1,6 @@
-# Nguồn Tham Khảo & Confidence Level (v1.9.1)
+# Nguồn tham khảo và Confidence Level (v2.0.1)
+
+> Confidence được đánh giá theo từng claim, không gán một mức tuyệt đối cho toàn bộ skill. Xem `source-manifest.yaml` để biết văn bản nào thực sự có trong gói. Một nguồn từng được đọc ở môi trường xây dựng nhưng không có trong gói không được xem là bằng chứng self-contained cho người dùng mới.
 
 ## 🟢 Nguồn cao nhất: văn bản gốc do người dùng cung cấp trực tiếp (v1.4.0, 22/07/2026)
 Người dùng cung cấp trực tiếp các file gốc (PDF scan ký số hoặc .docx tải từ vanban.chinhphu.vn) trong thư mục project — đây là mức xác nhận cao nhất, KHÔNG qua web fetch nên không bị giới hạn nén nội dung của công cụ (đã gặp ở v1.3.0).
@@ -68,15 +70,16 @@ Người dùng cung cấp trực tiếp các file gốc (PDF scan ký số hoặ
 | Thuế môn bài bãi bỏ từ 01/01/2026 | thuvienphapluat.vn, meinvoice.vn (khớp nhau) | 🟢 HIGH |
 | Đóng BHXH/BHYT/BHTN, báo cáo lao động | *(dòng cũ đã lỗi thời — xem 2 dòng chi tiết bên trên: NĐ 145/2020/NĐ-CP cho báo cáo lao động, Luật BHXH 41/2024/QH15 Điều 34.4 cho hạn đóng BHXH)* | 🟢 HIGH (xem chi tiết bên trên) |
 
-## Hạn chế chung của skill (v2.0.0)
-- **100% TOÀN BỘ NỘI DUNG** (TNDN lõi + thủ tục tạm nộp 80% + gia hạn + nghĩa vụ phụ lao động/BHXH/kiểm toán) đã được xây dựng/xác minh qua **văn bản gốc do người dùng cung cấp trực tiếp** (PDF/docx, đọc toàn văn):
+## Hạn chế chung của skill (v2.0.1)
+
+- Phần TNDN lõi, thủ tục tạm nộp và gia hạn đã được xây dựng từ các văn bản gốc quan trọng do người dùng cung cấp:
   - Nghị định 320/2025/NĐ-CP (76 trang full text)
   - **Nghị định 252/2026/NĐ-CP** (1416+ dòng full text) — thay thế NĐ 126/2020 và NĐ 91/2022 từ 01/07/2026
   - **Nghị định 245/2026/NĐ-CP** (full text) — gia hạn nộp thuế 2026
   - Nghị định 254/2026/NĐ-CP (full text) — hóa đơn điện tử
   - Thông tư 20/2026/TT-BTC (full text 10 điều + mẫu biểu)
   - Nghị định 68/2026/NĐ-CP, Nghị định 310/2025/NĐ-CP, Nghị định 145/2020, NĐ 12/2022, NĐ 17/2012, Luật 41/2024/QH15...
-- KHÔNG còn bất kỳ mục nào ở mức 🟡 MEDIUM hoặc 🔴 LOW.
+- Một số claim ngoài TNDN cốt lõi vẫn phải xem là 🟡 MEDIUM khi bản gốc chưa được đóng gói, điển hình nội dung dựa trên Nghị định 90/2025/NĐ-CP.
 - CHƯA qua bước đối chiếu chuyên gia thuế/luật sư độc lập.
 - Khuyến nghị trước khi dùng cho quyết định thực tế: đối chiếu trực tiếp bằng trình duyệt thường tại thuvienphapluat.vn, vanban.chinhphu.vn, gdt.gov.vn, hoặc tham vấn kế toán/luật sư thuế.
 

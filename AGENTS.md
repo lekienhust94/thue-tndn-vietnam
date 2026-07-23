@@ -5,10 +5,10 @@
 **Phạm vi áp dụng:** CHỈ áp dụng các rule dưới đây khi user hỏi về thuế Thu nhập doanh nghiệp (TNDN) Việt Nam, thuế suất, ưu đãi thuế, tạm nộp quý, quyết toán năm, chi phí được trừ/không được trừ, hoặc nghĩa vụ thuế/kê khai liên quan của doanh nghiệp (GTGT, hóa đơn điện tử, PIT withholding, BHXH). Câu hỏi ngoài phạm vi này thì bỏ qua các rule bên dưới.
 
 > [!CAUTION]
-> **RISK LEVEL: LOW** — Nội dung liên quan quy định pháp luật nhà nước.
+> **RISK LEVEL: MEDIUM-HIGH** — Sai sót có thể ảnh hưởng số thuế, tiền chậm nộp hoặc hồ sơ của doanh nghiệp.
 > - Chỉ mang tính tham khảo, KHÔNG thay thế tư vấn thuế chuyên nghiệp.
-> - Áp dụng: Kỳ tính thuế 2026 | Luật Thuế TNDN số 67/2025/QH15 | **v2.0.0 (100% 🟢 HIGH Confidence)**.
-> - Xây dựng hoàn toàn bằng **văn bản gốc do người dùng cung cấp trực tiếp** (đã đọc toàn văn: NĐ 320/2025/NĐ-CP 76 trang, NĐ 252/2026/NĐ-CP 1416+ dòng, NĐ 245/2026/NĐ-CP, NĐ 254/2026/NĐ-CP, TT 20/2026/TT-BTC, NĐ 68/2026/NĐ-CP, NĐ 310/2025/NĐ-CP, NĐ 145/2020, NĐ 12/2022, NĐ 17/2012, Luật 67/2025, Luật 09/2026, Luật 149/2025, Luật 48/2024, Luật 41/2024...).
+> - Áp dụng: Kỳ tính thuế 2026 | Luật Thuế TNDN số 67/2025/QH15 | **v2.0.1 — confidence theo từng claim**.
+> - Các văn bản gốc được đóng gói và phần còn thiếu được liệt kê tại `references/source-manifest.yaml`; không mặc định toàn bộ nội dung đều có cùng confidence.
 > - Xem `references/changelog.md` và `references/sources.md` để biết confidence level từng mục trước khi trả lời.
 
 ## Bắt buộc: đọc file reference tương ứng trước khi trả lời
@@ -86,8 +86,8 @@ Codex không tự động nạp file theo mô tả (khác cơ chế skill-matchi
 | Chỉ số | Giá trị | Căn cứ | Confidence |
 |--------|---------|--------|-----------|
 | Thuế suất phổ thông | **20%** | Luật 67/2025/QH15 | 🟢 HIGH |
-| Thuế suất DN doanh thu ≤ 3 tỷ/năm (năm trước liền kề) | **15%** | NĐ 320/2025/NĐ-CP, Điều 11 | 🟢 HIGH |
-| Thuế suất DN doanh thu 3-50 tỷ/năm | **17%** | NĐ 320/2025/NĐ-CP, Điều 11 | 🟢 HIGH |
+| Thuế suất theo doanh thu ≤ 3 tỷ/năm (năm trước liền kề) | **15%** | NĐ 320/2025/NĐ-CP, Điều 11 | 🟢 HIGH |
+| Thuế suất theo doanh thu trên 3-50 tỷ/năm | **17%** | NĐ 320/2025/NĐ-CP, Điều 11 | 🟢 HIGH |
 | Ngày Luật TNDN mới có hiệu lực | **01/10/2025** | Luật 67/2025/QH15 | 🟢 HIGH |
 | Ngưỡng tạm nộp quý phải đạt | **≥ 80%** số thuế cả năm (tính đến hết quý 4) | **NĐ 252/2026/NĐ-CP**, Điều 24 khoản 3a (thay thế NĐ 126/2020 + NĐ 91/2022 từ 01/07/2026) | 🟢 HIGH |
 | Hạn nộp tạm tính quý thông thường | Q1: 30/04, Q2: 31/07, Q3: 31/10, Q4: 31/01 | **NĐ 252/2026/NĐ-CP**, Điều 24 khoản 2 | 🟢 HIGH |
@@ -103,7 +103,8 @@ Codex không tự động nạp file theo mô tả (khác cơ chế skill-matchi
 ```
 ⚠️ Thông tin chỉ mang tính tham khảo, KHÔNG thay thế tư vấn thuế chuyên nghiệp.
 Căn cứ: [ghi rõ luật/NĐ/TT].
-Kiểm tra lại tại: https://gdt.gov.vn hoặc https://thuvienphapluat.vn
+Dữ liệu tài liệu cập nhật: [ngày trong changelog/sources].
+Kiểm tra văn bản hiện hành tại: https://vanban.chinhphu.vn hoặc https://gdt.gov.vn
 ```
 
 ## Common Mistakes
@@ -111,11 +112,55 @@ Kiểm tra lại tại: https://gdt.gov.vn hoặc https://thuvienphapluat.vn
 | Lỗi thường gặp | Cách xử lý đúng |
 |---------------|----------------|
 | Nhầm thuế TNDN với thuế TNCN | Nói rõ: đây là thuế trên lợi nhuận doanh nghiệp, khác thuế TNCN trên thu nhập cá nhân |
-| Áp thuế suất ưu đãi 15%/17% mà không hỏi doanh thu năm liền trước | Luôn hỏi doanh thu năm trước khi áp dụng |
+| Áp thuế suất theo doanh thu 15%/17% mà không hỏi doanh thu năm liền trước | Luôn hỏi doanh thu năm trước khi áp dụng |
 | Khẳng định chắc chắn DN được hưởng ưu đãi ngành/vùng mà chưa đủ thông tin | Hỏi thêm ngành nghề, địa bàn, loại dự án đầu tư |
 | Dùng số liệu Luật TNDN cũ (Luật 14/2008/QH12 và các lần sửa đổi trước) | Từ kỳ tính thuế 2026 áp dụng Luật 67/2025/QH15 |
 | Ghi nhầm ngày hạn nộp tạm tính Q2 (30/07) và Q3 (30/10) | Tháng 7 và tháng 10 có 31 ngày → hạn đúng là 31/07 và 31/10 (NĐ 252/2026 Đ.24) |
 | Diễn đạt hạn quyết toán là "trong vòng 90 ngày" | Dùng cụm từ chuẩn pháp lý: "chậm nhất ngày cuối cùng của tháng thứ ba" |
 
 ---
-> Nguồn gốc: chuyển thể từ `SKILL.md` (bản dành cho Claude Skill). Khi `SKILL.md` được cập nhật version mới, đồng bộ lại các bảng/rule tương ứng ở đây. v2.0.0 | 23/07/2026.
+> Nguồn gốc: adapter từ `SKILL.md`. Khi cập nhật, phải đồng bộ các rule tương ứng và kiểm tra `references/source-manifest.yaml`. v2.0.1 | 23/07/2026.
+
+
+<!-- headroom:rtk-instructions -->
+# RTK (Rust Token Killer) - Token-Optimized Commands
+
+When running shell commands, **always prefix with `rtk`**. This reduces context
+usage by 60-90% with zero behavior change. If rtk has no filter for a command,
+it passes through unchanged — so it is always safe to use.
+
+## Key Commands
+```bash
+# Git (59-80% savings)
+rtk git status          rtk git diff            rtk git log
+
+# Files & Search (60-75% savings)
+rtk ls <path>           rtk read <file>         rtk grep <pattern>
+rtk find <pattern>      rtk diff <file>
+
+# Test (90-99% savings) — shows failures only
+rtk pytest tests/       rtk cargo test          rtk test <cmd>
+
+# Build & Lint (80-90% savings) — shows errors only
+rtk tsc                 rtk lint                rtk cargo build
+rtk prettier --check    rtk mypy                rtk ruff check
+
+# Analysis (70-90% savings)
+rtk err <cmd>           rtk log <file>          rtk json <file>
+rtk summary <cmd>       rtk deps                rtk env
+
+# GitHub (26-87% savings)
+rtk gh pr view <n>      rtk gh run list         rtk gh issue list
+
+# Infrastructure (85% savings)
+rtk docker ps           rtk kubectl get         rtk docker logs <c>
+
+# Package managers (70-90% savings)
+rtk pip list            rtk pnpm install        rtk npm run <script>
+```
+
+## Rules
+- In command chains, prefix each segment: `rtk git add . && rtk git commit -m "msg"`
+- For debugging, use raw command without rtk prefix
+- `rtk proxy <cmd>` runs command without filtering but tracks usage
+<!-- /headroom:rtk-instructions -->

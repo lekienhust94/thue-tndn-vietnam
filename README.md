@@ -1,101 +1,102 @@
-# 🇻🇳 Skill Thuế TNDN Vietnam (2026)
+# Skill Thuế TNDN Việt Nam 2026
 
-> AI Skill tra cứu thuế Thu nhập doanh nghiệp (TNDN), ưu đãi thuế, tạm nộp/quyết toán, và lịch nghĩa vụ định kỳ của doanh nghiệp (kèm GTGT, hóa đơn điện tử, lao động/BHXH, kiểm toán BCTC).
+AI skill tra cứu thuế thu nhập doanh nghiệp Việt Nam: thuế suất, căn cứ tính thuế, chi phí được trừ, ưu đãi, tạm nộp quý, quyết toán năm và nghĩa vụ doanh nghiệp liên quan.
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue)]()
+[![Version](https://img.shields.io/badge/version-2.0.1-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-green)]()
-[![Confidence](https://img.shields.io/badge/confidence-100%25--HIGH-brightgreen)]()
+[![Evidence](https://img.shields.io/badge/evidence-claim--level-yellowgreen)]()
 
-## Tổng Quan
+> Nội dung pháp lý có mức rủi ro trung bình–cao. Skill hỗ trợ tra cứu, không thay thế việc kiểm tra văn bản hiện hành hoặc tư vấn chuyên nghiệp.
 
-Skill **thue-tndn-vietnam** là bộ công cụ tra cứu thuế TNDN dạng AI, tự chứa toàn bộ dữ liệu cần thiết. Hoạt động trên Claude Code, Claude Desktop, và các nền tảng AI hỗ trợ skill/knowledge base. Đây là skill **độc lập, tách biệt hoàn toàn** với skill `thue-tncn-vietnam` (thuế cá nhân) — không dùng chung dữ liệu hay tham chiếu chéo.
+## Cài đặt
 
-### Tính năng chính
+### Claude Code
 
-- 📊 **Thuế suất TNDN** (Luật 67/2025/QH15) + các mức ưu đãi theo ngành/địa bàn
-- 🧾 **Chi phí được trừ / không được trừ** khi tính thuế TNDN
-- 📅 **Tạm nộp theo quý + quyết toán năm** — quy trình, hạn nộp, mẫu biểu
-- 🧮 **Thuế GTGT liên quan**: thuế suất, ngưỡng hộ/cá nhân kinh doanh (500 triệu/năm), kê khai tháng/quý
-- 🧻 **Hóa đơn điện tử**: khung pháp lý hiện hành (NĐ 254/2026/NĐ-CP), ngưỡng bắt buộc
-- 🗓️ **Lịch nghĩa vụ doanh nghiệp** đầy đủ: thuế + lao động/BHXH + kiểm toán BCTC bắt buộc
+Sao chép toàn bộ thư mục repo vào:
 
-## Cài Đặt
-
-### Claude Code / Claude Desktop
-
-```
-your-project/
-└── .agents/
-    └── skill/
-        └── thue-tndn-vietnam/   ← copy vào đây
+```text
+<project>/.claude/skills/thue-tndn-vietnam/
 ```
 
-Hoặc cài global: `~/.claude/skills/thue-tndn-vietnam/`.
+Hoặc cài ở phạm vi người dùng:
 
-### Codex CLI
-
-Repo đã có sẵn `AGENTS.md` ở gốc (bản chuyển thể từ `SKILL.md`, không có frontmatter riêng của Claude). Codex tự động đọc `AGENTS.md` khi chạy trong thư mục repo — không cần cấu hình thêm, chỉ cần chạy `codex` với working directory là gốc project này (hoặc thư mục cha chứa nó, tùy cách Codex quét).
-
-> Lưu ý: khác với Claude Skill (tự nạp `references/*.md` theo mô tả khi cần), Codex không tự trigger — `AGENTS.md` chỉ định tường minh "phải mở file X trước khi trả lời câu hỏi Y", Codex sẽ tự đọc file đó vì có quyền truy cập filesystem.
-
-### Các nền tảng khác (ChatGPT Custom GPT/Project, v.v.)
-
-Dán nội dung thân `SKILL.md` (bỏ frontmatter) vào system prompt/instructions, upload toàn bộ thư mục `references/` vào knowledge base.
-
-## Số Liệu Nhanh (2026)
-
-| Chỉ số | Giá trị | Căn cứ |
-|--------|---------|--------|
-| Thuế suất TNDN phổ thông | 20% | Luật 67/2025/QH15 |
-| Thuế suất ưu đãi | 15% / 17% | NĐ 320/2025/NĐ-CP |
-| Ngưỡng GTGT miễn thuế hộ/cá nhân KD | **500 triệu đồng/năm** | NĐ 68/2026/NĐ-CP, Điều 3.1 |
-| Ngưỡng bắt buộc hóa đơn điện tử có mã CQT (hộ/cá nhân KD) | 1 tỷ đồng/năm | NĐ 68/2026/NĐ-CP, Điều 8.5.a |
-| Thủ tục quản lý thuế, Tạm nộp TNDN 80% | NĐ 252/2026/NĐ-CP, Điều 24 | NĐ 252/2026/NĐ-CP (thay NĐ 126/2020 & NĐ 91/2022 từ 01/07/2026) |
-| Gia hạn nộp thuế TNDN 2026 (Q2 → 02/11, Q3 → 30/12) | NĐ 245/2026/NĐ-CP | NĐ 245/2026/NĐ-CP (DN thuộc 43 ngành hoặc DN nhỏ/siêu nhỏ) |
-| Hạn đóng BHXH/BHYT/BHTN (đóng hằng tháng) | Chậm nhất ngày cuối cùng tháng tiếp theo | Luật BHXH 41/2024/QH15, Điều 34.4 |
-| Tiêu chí "DN quy mô lớn" phải kiểm toán bắt buộc | ≥2/3: LĐ >200 người, doanh thu >300 tỷ, tổng tài sản >100 tỷ | NĐ 90/2025/NĐ-CP (sửa NĐ 17/2012/NĐ-CP) |
-
-## Cấu Trúc
-
+```text
+~/.claude/skills/thue-tndn-vietnam/
 ```
+
+### Codex
+
+Sao chép toàn bộ thư mục repo vào:
+
+```text
+<project>/.agents/skills/thue-tndn-vietnam/
+```
+
+Hoặc cài ở phạm vi người dùng:
+
+```text
+~/.codex/skills/thue-tndn-vietnam/
+```
+
+`AGENTS.md` ở gốc là adapter cho trường hợp chạy Codex trực tiếp trong repo. Nó không thay thế việc cài `SKILL.md` khi muốn dùng skill ở project khác.
+
+### Claude Desktop và nền tảng knowledge-base
+
+Không giả định Claude Desktop tự quét các thư mục của Claude Code. Hãy import/upload gói skill theo cơ chế mà phiên bản ứng dụng đang hỗ trợ. Với nền tảng chỉ có knowledge base, dùng phần thân `SKILL.md` làm instruction và tải các file Markdown trong `references/`; PDF/DOCX là lớp bằng chứng đối chiếu.
+
+## Phạm vi
+
+- TNDN cốt lõi: thuế suất, căn cứ tính thuế, chi phí được/không được trừ.
+- Thuế suất theo doanh thu 15%/17% và điều kiện áp dụng.
+- Ưu đãi theo ngành, địa bàn, dự án và thời gian.
+- Tạm nộp quý, quy tắc 80%, quyết toán năm và deadline.
+- GTGT, hóa đơn, lao động/BHXH và kiểm toán chỉ khi liên quan nghĩa vụ doanh nghiệp.
+
+Mức 15%/17% trong NĐ 320/2025/NĐ-CP được gọi là **thuế suất theo doanh thu**, không gọi chung là ưu đãi ngành/địa bàn.
+
+## Cấu trúc
+
+```text
 thue-tndn-vietnam/
-├── SKILL.md                              ← Master file cho Claude Skill (AI đọc đầu tiên)
-├── AGENTS.md                              ← Bản chuyển thể của SKILL.md cho Codex CLI/agent khác
-├── README.md                             ← File này
-├── LICENSE                               ← MIT
-└── references/
-    ├── tong-quan-thue.md                 ← Thuế suất TNDN, kỳ tính thuế
-    ├── uu-dai-thue.md                     ← Ưu đãi thuế theo ngành/địa bàn/thời gian
-    ├── ke-khai-tam-nop-quyet-toan.md      ← Tạm nộp quý + quyết toán năm
-    ├── thue-gtgt-lien-quan.md             ← Thuế GTGT (thuế suất, ngưỡng, kê khai)
-    ├── hoa-don-dien-tu.md                 ← Hóa đơn điện tử
-    ├── lich-nghia-vu-doanh-nghiep.md      ← Lịch tổng hợp TẤT CẢ nghĩa vụ định kỳ
-    ├── faq.md                             ← Câu hỏi thường gặp
-    ├── deadline-tracker.md                ← Lịch nộp thuế 2026
-    ├── changelog.md                       ← Lịch sử cập nhật theo version
-    ├── sources.md                         ← Nguồn tham khảo + confidence level từng mục
-    └── nguon-goc/                         ← Văn bản gốc dùng làm bằng chứng trích dẫn
-        └── Luat-41-2024-QH15-BHXH.pdf     ← Văn bản gốc Luật BHXH 2024 (nguồn sơ cấp)
+├── SKILL.md
+├── AGENTS.md
+├── references/
+│   ├── tong-quan-thue.md
+│   ├── uu-dai-thue.md
+│   ├── ke-khai-tam-nop-quyet-toan.md
+│   ├── deadline-tracker.md
+│   ├── thue-gtgt-lien-quan.md
+│   ├── hoa-don-dien-tu.md
+│   ├── lich-nghia-vu-doanh-nghiep.md
+│   ├── faq.md
+│   ├── changelog.md
+│   ├── sources.md
+│   ├── source-manifest.yaml
+│   └── nguon-goc/
+└── LICENSE
 ```
 
-## Phương Pháp Xây Dựng & Confidence
+## Confidence và nguồn
 
-Skill được xây dựng theo thứ tự ưu tiên nguồn:
+Confidence được đánh giá theo từng claim:
 
-1. **Văn bản gốc** do người dùng cung cấp trực tiếp (PDF/docx từ vanban.chinhphu.vn, Công báo) — mức xác nhận cao nhất, đọc toàn văn
-2. Fetch trực tiếp từ vanban.chinhphu.vn / baochinhphu.vn
-3. WebSearch/WebFetch từ các nguồn thứ cấp (thuvienphapluat.vn, luatvietnam.vn...) — chỉ dùng khi chưa có văn bản gốc, luôn ghi rõ trong `sources.md`
+- `HIGH`: đã đối chiếu văn bản gốc phù hợp.
+- `MEDIUM`: nguồn phù hợp nhưng bản gốc chưa được đóng gói hoặc mới đối chiếu nguồn thứ cấp.
+- `LOW`: chưa đủ cơ sở để dùng cho kết luận.
 
-**Tính đến v2.0.0**: 100% toàn bộ nội dung — cả TNDN cốt lõi, thủ tục quản lý thuế (NĐ 252/2026), gia hạn nộp thuế (NĐ 245/2026), lẫn các nghĩa vụ phụ — đều đã ở mức 🟢 **HIGH CONFIDENCE**, được xác minh trực tiếp bằng văn bản gốc do người dùng cung cấp. Chi tiết từng mục xem `references/sources.md`.
+`references/source-manifest.yaml` phân biệt rõ văn bản có trong gói và văn bản còn thiếu. Không suy từ việc một số văn bản đã được kiểm tra rằng toàn bộ skill đạt “100% HIGH”.
 
-## Lưu Ý Quan Trọng
+Ưu tiên nguồn:
 
-⚠️ **Thông tin chỉ mang tính tham khảo, KHÔNG thay thế tư vấn thuế chuyên nghiệp.**
+1. Văn bản gốc từ cơ quan nhà nước.
+2. `vanban.chinhphu.vn`, `quochoi.vn`, `gdt.gov.vn`.
+3. Nguồn tổng hợp tư nhân chỉ để hỗ trợ tìm kiếm; phải ghi rõ giới hạn.
 
-Kiểm tra lại tại:
-- https://vanban.chinhphu.vn
-- https://gdt.gov.vn
+## Hạn chế
 
----
+- Tài liệu tập trung kỳ tính thuế 2026; không áp dụng máy móc cho kỳ trước.
+- Một số văn bản được nhắc trong `sources.md` chưa có bản gốc trong gói.
+- Chưa được chuyên gia thuế/luật sư độc lập thẩm định toàn bộ.
+- Trước khi kê khai hoặc nộp tiền, phải kiểm tra văn bản hiện hành.
 
-*Cập nhật: 23/07/2026 | Luật Thuế TNDN 67/2025/QH15*
+⚠️ Thông tin chỉ mang tính tham khảo, KHÔNG thay thế tư vấn thuế chuyên nghiệp. Kiểm tra tại https://vanban.chinhphu.vn hoặc https://gdt.gov.vn.

@@ -1,1 +1,6 @@
 .DS_Store
+
+# Local development and validation helpers — not part of the distributed skill
+/scripts/validate_skill.py
+/evals/cases.yaml
+/agents/openai.yaml

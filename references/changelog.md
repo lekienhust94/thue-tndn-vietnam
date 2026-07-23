@@ -1,5 +1,14 @@
 # Changelog — thue-tndn-vietnam
 
+## v2.0.1 — 23/07/2026
+
+- Chuẩn hóa package cho Claude Code và Codex; sửa `.agents/skill` thành `.agents/skills`.
+- Bổ sung `references/source-manifest.yaml`; validator, metadata UI và bộ eval chỉ được giữ cục bộ, không phân phối cùng skill.
+- Đổi `RISK LEVEL` từ LOW thành MEDIUM-HIGH.
+- Bỏ tuyên bố tuyệt đối “100% HIGH”; confidence được đánh giá theo từng claim và tình trạng văn bản gốc.
+- Gọi mức 15%/17% là “thuế suất theo doanh thu”, tách khỏi ưu đãi ngành/địa bàn.
+- Làm rõ Claude Desktop không mặc định dùng chung cơ chế quét skill của Claude Code.
+
 ## v2.0.0 — 23/07/2026
 Đã đọc toàn văn gốc **Nghị định 252/2026/NĐ-CP** (ban hành 30/06/2026, hiệu lực từ 01/07/2026, file .docx & .pdf do người dùng cung cấp trong `Thue_Doc`):
 

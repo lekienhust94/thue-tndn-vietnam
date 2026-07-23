@@ -1,0 +1,166 @@
+schema_version: 1
+content_version: "2.0.1"
+last_reviewed: "2026-07-23"
+
+# `bundled: true` chỉ xác nhận file có trong gói, không phải xác nhận pháp lý độc lập.
+documents:
+  - id: "67/2025/QH15"
+    title: "Luật Thuế thu nhập doanh nghiệp"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/tong-quan-thue.md"
+      - "references/uu-dai-thue.md"
+
+  - id: "320/2025/NĐ-CP"
+    title: "Nghị định hướng dẫn Luật Thuế TNDN"
+    bundled: true
+    files:
+      - "references/nguon-goc/VanBanGoc_NĐ 320.2025-ndcp.pdf"
+    used_by:
+      - "references/tong-quan-thue.md"
+      - "references/uu-dai-thue.md"
+
+  - id: "09/2026/QH16"
+    title: "Luật sửa đổi một số luật thuế"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/uu-dai-thue.md"
+      - "references/thue-gtgt-lien-quan.md"
+
+  - id: "141/2026/NĐ-CP"
+    title: "Nghị định về ngưỡng doanh thu miễn thuế"
+    bundled: true
+    files:
+      - "references/nguon-goc/Nghị-định-141-2026-NĐ-CP.docx"
+      - "references/nguon-goc/Nghị-định-141-2026-NĐ-CP.pdf"
+    used_by:
+      - "references/uu-dai-thue.md"
+
+  - id: "245/2026/NĐ-CP"
+    title: "Nghị định gia hạn thời hạn nộp thuế năm 2026"
+    bundled: true
+    files:
+      - "references/nguon-goc/Nghị-định-245-2026-NĐ-CP.docx"
+      - "references/nguon-goc/Nghị-định-245-2026-NĐ-CP.pdf"
+    used_by:
+      - "references/deadline-tracker.md"
+
+  - id: "252/2026/NĐ-CP"
+    title: "Nghị định hướng dẫn quản lý thuế"
+    bundled: true
+    files:
+      - "references/nguon-goc/Nghị-định-252-2026-NĐ-CP.docx"
+      - "references/nguon-goc/Nghị-định-252-2026-NĐ-CP.pdf"
+    used_by:
+      - "references/ke-khai-tam-nop-quyet-toan.md"
+      - "references/deadline-tracker.md"
+
+  - id: "254/2026/NĐ-CP"
+    title: "Nghị định về hóa đơn, chứng từ"
+    bundled: true
+    files:
+      - "references/nguon-goc/Nghị-định-254-2026-NĐ-CP.docx"
+      - "references/nguon-goc/Nghị-định-254-2026-NĐ-CP.pdf"
+    used_by:
+      - "references/hoa-don-dien-tu.md"
+
+  - id: "20/2026/TT-BTC"
+    title: "Thông tư hướng dẫn thuế TNDN"
+    bundled: true
+    files:
+      - "references/nguon-goc/TT 20-2026_BTC.docx"
+      - "references/nguon-goc/TT 20-2026_BTC.pdf"
+    used_by:
+      - "references/tong-quan-thue.md"
+
+  - id: "68/2026/NĐ-CP"
+    title: "Nghị định về hộ, cá nhân kinh doanh"
+    bundled: true
+    files:
+      - "references/nguon-goc/ND-68-2026-NDCP.pdf"
+    used_by:
+      - "references/thue-gtgt-lien-quan.md"
+
+  - id: "41/2024/QH15"
+    title: "Luật Bảo hiểm xã hội"
+    bundled: true
+    files:
+      - "references/nguon-goc/Luat-41-2024-QH15-BHXH.pdf"
+    used_by:
+      - "references/lich-nghia-vu-doanh-nghiep.md"
+
+  - id: "90/2025/NĐ-CP"
+    title: "Nghị định sửa đổi quy định kiểm toán độc lập"
+    bundled: false
+    official_copy_required: true
+    confidence: "MEDIUM"
+    note: "Hiện sources.md ghi nhận đối chiếu qua nguồn web; chưa có bản gốc trong gói."
+    used_by:
+      - "references/lich-nghia-vu-doanh-nghiep.md"
+
+  - id: "149/2025/QH15"
+    title: "Luật sửa đổi Luật Thuế giá trị gia tăng"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/thue-gtgt-lien-quan.md"
+
+  - id: "48/2024/QH15"
+    title: "Luật Thuế giá trị gia tăng"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/thue-gtgt-lien-quan.md"
+
+  - id: "310/2025/NĐ-CP"
+    title: "Nghị định xử phạt vi phạm hành chính về thuế, hóa đơn"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/hoa-don-dien-tu.md"
+
+  - id: "145/2020/NĐ-CP"
+    title: "Nghị định hướng dẫn Bộ luật Lao động"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/lich-nghia-vu-doanh-nghiep.md"
+
+  - id: "12/2022/NĐ-CP"
+    title: "Nghị định xử phạt vi phạm hành chính về lao động, BHXH"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/lich-nghia-vu-doanh-nghiep.md"
+
+  - id: "17/2012/NĐ-CP"
+    title: "Nghị định hướng dẫn Luật Kiểm toán độc lập"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/lich-nghia-vu-doanh-nghiep.md"
+
+  - id: "158/2025/NĐ-CP"
+    title: "Nghị định hướng dẫn Luật Bảo hiểm xã hội"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/lich-nghia-vu-doanh-nghiep.md"
+
+  - id: "38/2019/QH14"
+    title: "Luật Quản lý thuế"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/ke-khai-tam-nop-quyet-toan.md"
+      - "references/deadline-tracker.md"
+
+  - id: "56/2024/QH15"
+    title: "Luật sửa đổi một số luật"
+    bundled: false
+    official_copy_required: true
+    used_by:
+      - "references/ke-khai-tam-nop-quyet-toan.md"
+      - "references/deadline-tracker.md"
