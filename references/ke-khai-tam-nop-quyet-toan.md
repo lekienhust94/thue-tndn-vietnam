@@ -2,12 +2,12 @@
 
 ## 1. Tạm nộp thuế TNDN theo quý
 
-Doanh nghiệp tự xác định số thuế TNDN tạm nộp hàng quý (không phải nộp tờ khai tạm tính, chỉ nộp tiền thuế).
-
-### Quy tắc 80%
-- Tổng số thuế TNDN đã tạm nộp của **4 quý** không được thấp hơn **80%** số thuế TNDN phải nộp theo quyết toán năm.
-- Nếu nộp thiếu so với 80%: phần chênh lệch từ **sau ngày hết hạn nộp thuế quý 4** đến ngày thực nộp số thuế còn thiếu sẽ bị tính **tiền chậm nộp** (mức phổ biến: 0,03%/ngày).
-- Hạn nộp thuế tạm tính quý 4 thường là ngày **30 hoặc 31 tháng 01** năm sau (theo lịch nộp thuế cụ thể từng năm — xem `deadline-tracker.md`).
+### Quy tắc 80% (Điều 24 Nghị định 252/2026/NĐ-CP — 🟢 HIGH, đã đọc toàn văn gốc)
+- Doanh nghiệp tự xác định số thuế TNDN tạm nộp hằng quý (không phải nộp tờ khai tạm tính quý, chỉ tạm nộp tiền thuế — Điều 24 khoản 1a & 3a).
+- Tổng số thuế TNDN đã tạm nộp của **4 quý** không được thấp hơn **80%** số thuế TNDN phải nộp theo quyết toán năm của doanh nghiệp tự kê khai (Điều 24 khoản 3a).
+- Hạn nộp tiền thuế tạm nộp quý chậm nhất là **ngày cuối cùng của tháng đầu tiên của quý tiếp theo** phát sinh nghĩa vụ thuế (Q1: 30/04, Q2: 31/07, Q3: 31/10, Q4: 31/01 — Điều 24 khoản 2).
+- Nếu nộp thiếu so với 80%: phần chênh lệch sẽ bị tính **tiền chậm nộp** kể từ ngày tiếp theo liền kề của ngày cuối cùng thời hạn tạm nộp quý 4 (tức từ 01/02) đến ngày liền kề trước ngày số tiền còn thiếu được nộp vào NSNN (Điều 24 khoản 3b).
+- Căn cứ pháp lý mới: **Nghị định 252/2026/NĐ-CP** (hiệu lực từ 01/07/2026) chính thức **thay thế Nghị định 126/2020/NĐ-CP và Nghị định 91/2022/NĐ-CP** (Điều 74 khoản 3).
 
 ### Công thức kiểm tra
 ```
@@ -24,7 +24,7 @@ Nếu KHÔNG đạt → Số thiếu = 80% × Quyết toán − Tổng đã tạ
 - Các phụ lục liên quan (ưu đãi thuế, chuyển lỗ, giao dịch liên kết nếu có...)
 
 ### Hạn nộp quyết toán
-- Trong vòng **90 ngày** kể từ ngày kết thúc năm tài chính (thường là 31/12 → hạn quyết toán khoảng cuối tháng 3 năm sau, điều chỉnh nếu trùng ngày nghỉ lễ).
+- **Chậm nhất ngày cuối cùng của tháng thứ ba** kể từ ngày kết thúc năm tài chính (trước đây thường diễn đạt là "90 ngày" nhưng ngôn ngữ pháp lý chính xác hơn là "tháng thứ ba" — hai cách cho kết quả gần tương đương nhưng không hoàn toàn giống nhau). Với năm tài chính kết thúc 31/12 → hạn cơ bản là **31/03** năm sau (điều chỉnh nếu trùng ngày nghỉ lễ).
 - Nộp qua Cổng dịch vụ công của Tổng cục Thuế (thuedientu.gdt.gov.vn) hoặc phần mềm hỗ trợ kê khai (HTKK/iTaxViewer tùy quy định hiện hành).
 
 ### Sau quyết toán

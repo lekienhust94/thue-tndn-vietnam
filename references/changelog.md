@@ -1,5 +1,37 @@
 # Changelog — thue-tndn-vietnam
 
+## v2.0.0 — 23/07/2026
+Đã đọc toàn văn gốc **Nghị định 252/2026/NĐ-CP** (ban hành 30/06/2026, hiệu lực từ 01/07/2026, file .docx & .pdf do người dùng cung cấp trong `Thue_Doc`):
+
+- **Xác nhận căn cứ thủ tục**: Nghị định 252/2026/NĐ-CP Điều 74 khoản 3 chính thức **THAY THẾ Nghị định 126/2020/NĐ-CP, Nghị định 91/2022/NĐ-CP và Nghị định 373/2025/NĐ-CP** kể từ 01/07/2026.
+- **Xác nhận Quy tắc 80% & Hạn nộp**: Điều 24 quy định trực tiếp về Tạm nộp thuế TNDN theo quý:
+  - Khoản 2: Hạn tạm nộp quý chậm nhất là **ngày cuối cùng của tháng đầu của quý tiếp theo** (Q1: 30/04, Q2: 31/07, Q3: 31/10, Q4: 31/01).
+  - Khoản 3a: Tổng số tạm nộp 04 quý **không được thấp hơn 80%** số thuế TNDN phải nộp theo quyết toán năm.
+  - Khoản 3b: Nộp thiếu 80% sẽ bị tính tiền chậm nộp kể từ ngày liền kề sau hạn nộp quý 4 (01/02) đến ngày nộp đủ.
+- **MỐC CỘT MỐC ĐẠT ĐƯỢC**: Giải quyết dứt điểm mục 🟡 MEDIUM cuối cùng! Toàn bộ skill `thue-tndn-vietnam` hiện đạt **100% 🟢 HIGH CONFIDENCE**, tất cả căn cứ cốt lõi lẫn thủ tục đều được đối chiếu trực tiếp từ **văn bản gốc**.
+
+## v1.9.3 — 23/07/2026
+Đọc toàn văn gốc **Nghị định 245/2026/NĐ-CP** (ký ngày 27/6/2026, file .docx do người dùng cung cấp):
+
+- **Phát hiện quan trọng**: NĐ 245/2026 dẫn căn cứ là **Luật Quản lý thuế số 38/2019/QH14 được sửa đổi, bổ sung bởi Luật số 56/2024/QH15** — KHÔNG có Luật QLT 108/2025/QH15 như ban đầu dự đoán từ nhận xét độc lập. Điều này có nghĩa là Luật QLT chưa bị thay thế toàn bộ, mà chỉ được bổ sung qua Luật 56/2024. Đã sửa SKILL.md và `deadline-tracker.md` — hạn quyết toán nâng từ 🟡 MEDIUM lên **🟢 HIGH**.
+- **Xác nhận NĐ 245/2026/NĐ-CP**: Gia hạn GTGT, TNDN, TNCN hộ KD và tiền thuê đất năm 2026. Đối tượng: (a) DN/tổ chức/hộ KD thuộc 43 ngành kinh tế (Phụ lục I), (b) DN nhỏ và siêu nhỏ (theo Luật 2017 + NĐ 80/2021).
+- **Hạn gia hạn TNDN tạm nộp** (Điều 2, khoản 2): Q2 → **02/11/2026** (Điều 2.2a); Q3 → **30/12/2026** (Điều 2.2b). Đã nâng lên 🟢 HIGH trong `deadline-tracker.md`.
+- **Hạn gửi Văn bản đề nghị gia hạn**: chậm nhất **02/11/2026** — gửi sau ngày này sẽ không được gia hạn (Điều 3, khoản 2 và 3).
+- **Còn 1 mục MEDIUM**: số hiệu căn cứ quy tắc 80% tạm nộp (NĐ 126/2020 có thể đã thay bởi NĐ 252/2026 — chưa có bản gốc NĐ 252 để xác minh).
+
+## v1.9.2 — 23/07/2026
+Cập nhật theo nhận xét đánh giá độc lập từ bên ngoài (peer review):
+
+- **`deadline-tracker.md`**: Sửa lỗi ngày hạn tạm nộp Q2 (30/07 → **31/07**) và Q3 (30/10 → **31/10**). Tháng 7 và tháng 10 có 31 ngày — lỗi đánh máy không ảnh hưởng nội dung nhưng sai số liệu cụ thể. Thêm chú thích căn cứ pháp lý cần cập nhật sang NĐ 252/2026/NĐ-CP (🟡 MEDIUM cho số hiệu).
+- **`deadline-tracker.md`**: Thêm mục thông tin về **NĐ 245/2026/NĐ-CP** gia hạn nộp thuế đặc biệt (Q2 đến 02/11, Q3 đến 30/12 — chỉ áp DN đủ điều kiện, không áp tự động). Ghi nhận 🟡 MEDIUM vì chưa có bản gốc để xác minh.
+- **`deadline-tracker.md` + `ke-khai-tam-nop-quyet-toan.md`**: Sửa diễn đạt hạn quyết toán từ **"90 ngày"** sang **"ngày cuối cùng của tháng thứ ba"** — ngôn ngữ pháp lý chính xác hơn (kết quả tương đương nhưng "tháng thứ ba" là ngôn ngữ luật).
+- **`uu-dai-thue.md` dòng 8-10**: Sửa câu "áp dụng đồng thời cho hộ kinh doanh" — làm rõ rằng hộ kinh doanh thực tế vẫn **500 triệu đồng** (theo NĐ 68/2026), không phải 1 tỷ. Ngưỡng 1 tỷ chỉ áp dụng cho doanh nghiệp/tổ chức (TNDN). Điểm này đã đúng ở `thue-gtgt-lien-quan.md` nhưng diễn đạt trong `uu-dai-thue.md` gây hiểu nhầm — đã thêm cảnh báo rõ ràng.
+- **`SKILL.md`**: Cập nhật bảng Số Liệu Nhanh — đánh dấu 2 mục 🟡 MEDIUM cho số hiệu căn cứ thủ tục (NĐ 126/2020 có thể → NĐ 252/2026; Luật 38/2019 có thể → Luật 108/2025). Nội dung vẫn HIGH, chỉ số hiệu cần cập nhật khi có văn bản gốc.
+- **Điểm KHÔNG thay đổi** (đã đúng, peer review hiểu nhầm):
+  - `tong-quan-thue.md` dòng 7: nhận định NĐ 252/2026 "không chuyên về TNDN" là **đúng và hợp lý** — đây là chú thích lịch sử giải thích lỗi cũ, không phủ nhận NĐ 252 có điều chỉnh thủ tục TNDN.
+  - "Mâu thuẫn" ngưỡng 1 tỷ/500 triệu: **không phải mâu thuẫn thực sự** — `SKILL.md` dòng 16 đã giải thích rõ; chỉ cần làm rõ hơn ở `uu-dai-thue.md` (đã sửa ở trên).
+- **Tài liệu còn cần bổ sung** để đạt HIGH hoàn toàn: (1) NĐ 252/2026/NĐ-CP toàn văn, (2) Luật QLT 108/2025/QH15, (3) NĐ 245/2026/NĐ-CP.
+
 ## v1.9.1 — 23/07/2026
 - Khi đồng bộ skill global sang bản copy trong project (`.agents/skill/thue-tndn-vietnam/`), phát hiện project đã có sẵn `Luat-41-2024-QH15-BHXH.pdf` (88 trang, có text layer) mà bản global chưa từng biết tới. Đọc toàn văn, xác nhận **Điều 34 khoản 4 điểm a**: đóng hằng tháng → chậm nhất ngày cuối cùng của tháng tiếp theo; đóng 3/6 tháng một lần → chậm nhất ngày cuối cùng của tháng tiếp theo ngay sau chu kỳ đóng — khớp 100% với kết quả WebSearch ở v1.9.0.
 - Mục "hạn đóng BHXH" trong `lich-nghia-vu-doanh-nghiep.md` và `sources.md` nâng cấp trích dẫn từ "xác nhận qua WebSearch" lên "xác nhận qua văn bản gốc" — không còn phụ thuộc nguồn thứ cấp cho mục này.

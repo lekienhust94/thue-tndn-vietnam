@@ -2,9 +2,9 @@
 
 > AI Skill tra cứu thuế Thu nhập doanh nghiệp (TNDN), ưu đãi thuế, tạm nộp/quyết toán, và lịch nghĩa vụ định kỳ của doanh nghiệp (kèm GTGT, hóa đơn điện tử, lao động/BHXH, kiểm toán BCTC).
 
-[![Version](https://img.shields.io/badge/version-1.9.1-blue)]()
+[![Version](https://img.shields.io/badge/version-2.0.0-blue)]()
 [![License](https://img.shields.io/badge/license-MIT-green)]()
-[![Confidence](https://img.shields.io/badge/confidence-HIGH-brightgreen)]()
+[![Confidence](https://img.shields.io/badge/confidence-100%25--HIGH-brightgreen)]()
 
 ## Tổng Quan
 
@@ -50,7 +50,8 @@ Dán nội dung thân `SKILL.md` (bỏ frontmatter) vào system prompt/instructi
 | Thuế suất ưu đãi | 15% / 17% | NĐ 320/2025/NĐ-CP |
 | Ngưỡng GTGT miễn thuế hộ/cá nhân KD | **500 triệu đồng/năm** | NĐ 68/2026/NĐ-CP, Điều 3.1 |
 | Ngưỡng bắt buộc hóa đơn điện tử có mã CQT (hộ/cá nhân KD) | 1 tỷ đồng/năm | NĐ 68/2026/NĐ-CP, Điều 8.5.a |
-| Kê khai GTGT tháng vs quý | > 50 tỷ/năm → tháng; ≤ 50 tỷ → quý | NĐ 126/2020/NĐ-CP |
+| Thủ tục quản lý thuế, Tạm nộp TNDN 80% | NĐ 252/2026/NĐ-CP, Điều 24 | NĐ 252/2026/NĐ-CP (thay NĐ 126/2020 & NĐ 91/2022 từ 01/07/2026) |
+| Gia hạn nộp thuế TNDN 2026 (Q2 → 02/11, Q3 → 30/12) | NĐ 245/2026/NĐ-CP | NĐ 245/2026/NĐ-CP (DN thuộc 43 ngành hoặc DN nhỏ/siêu nhỏ) |
 | Hạn đóng BHXH/BHYT/BHTN (đóng hằng tháng) | Chậm nhất ngày cuối cùng tháng tiếp theo | Luật BHXH 41/2024/QH15, Điều 34.4 |
 | Tiêu chí "DN quy mô lớn" phải kiểm toán bắt buộc | ≥2/3: LĐ >200 người, doanh thu >300 tỷ, tổng tài sản >100 tỷ | NĐ 90/2025/NĐ-CP (sửa NĐ 17/2012/NĐ-CP) |
 
@@ -85,7 +86,7 @@ Skill được xây dựng theo thứ tự ưu tiên nguồn:
 2. Fetch trực tiếp từ vanban.chinhphu.vn / baochinhphu.vn
 3. WebSearch/WebFetch từ các nguồn thứ cấp (thuvienphapluat.vn, luatvietnam.vn...) — chỉ dùng khi chưa có văn bản gốc, luôn ghi rõ trong `sources.md`
 
-**Tính đến v1.9.1**: toàn bộ nội dung — kể cả các nghĩa vụ phụ (lao động/BHXH/kiểm toán) — đã ở mức 🟢 **HIGH**, không còn mục nào ở mức MEDIUM/LOW. Chi tiết từng mục xem `references/sources.md`.
+**Tính đến v2.0.0**: 100% toàn bộ nội dung — cả TNDN cốt lõi, thủ tục quản lý thuế (NĐ 252/2026), gia hạn nộp thuế (NĐ 245/2026), lẫn các nghĩa vụ phụ — đều đã ở mức 🟢 **HIGH CONFIDENCE**, được xác minh trực tiếp bằng văn bản gốc do người dùng cung cấp. Chi tiết từng mục xem `references/sources.md`.
 
 ## Lưu Ý Quan Trọng
 

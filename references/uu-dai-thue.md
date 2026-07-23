@@ -5,9 +5,9 @@
 > 🟢 HIGH — xác nhận qua nhiều nguồn độc lập khớp nhau (amis.misa.vn, einvoice.vn, misaeshop.vn, xaydungchinhsach.chinhphu.vn — nguồn cuối là cổng chính sách của Chính phủ).
 
 - **Nghị định 141/2026/NĐ-CP** (ban hành **29/04/2026**, hiệu lực từ **01/01/2026**) bổ sung **Khoản 15, Điều 4, Nghị định 320/2025/NĐ-CP**: doanh nghiệp/tổ chức thành lập theo pháp luật Việt Nam có **tổng doanh thu năm ≤ 1 tỷ đồng** → **MIỄN HOÀN TOÀN thuế TNDN** (không chỉ là thuế suất ưu đãi 15%).
-- Đây SỬA lại mốc "500 triệu" từng được biết đến trước đó (đã lỗi thời) — mốc mới chính thức là **1 tỷ đồng/năm**, áp dụng đồng thời cho:
-  - Hộ kinh doanh/cá nhân kinh doanh (miễn GTGT + TNCN) — qua sửa Nghị định 68/2026/NĐ-CP
-  - Doanh nghiệp/tổ chức (miễn TNDN) — qua sửa Nghị định 320/2025/NĐ-CP
+- Đây SỬA lại mốc "500 triệu" từng được biết đến trước đó (đã lỗi thời) — mốc mới chính thức là **1 tỷ đồng/năm**, áp dụng cho:
+  - **Doanh nghiệp/tổ chức** (miễn TNDN) — qua sửa Nghị định 320/2025/NĐ-CP bởi NĐ 141/2026/NĐ-CP
+  - ⚠️ **Hộ kinh doanh/cá nhân kinh doanh** (miễn GTGT + TNCN): Nghị định 68/2026/NĐ-CP điều 3.1 giữ nguyên ngưỡng **500 triệu đồng/năm**, **không nâng lên 1 tỷ** — đã xác nhận bằng toàn văn gốc, xem chi tiết tại `thue-gtgt-lien-quan.md` mục "Diễn biến sửa đổi khoản 25 Điều 5". 🟢 HIGH.
 - **Cách xác định doanh thu**: theo phụ lục kết quả SXKD trong hồ sơ quyết toán TNDN kỳ trước liền kề. DN hoạt động <12 tháng: quy đổi theo doanh thu bình quân tháng × 12.
 - **Vượt ngưỡng cuối kỳ**: nếu doanh thu thực tế vượt 1 tỷ, DN kê khai/quyết toán bình thường, KHÔNG bị tính chậm nộp cho phần đã tạm miễn trước đó.
 - **Loại trừ**: không áp dụng cho DN là công ty con/có quan hệ liên kết mà bên liên kết không đủ điều kiện miễn thuế (chống lách thuế bằng cách chia nhỏ doanh nghiệp).
